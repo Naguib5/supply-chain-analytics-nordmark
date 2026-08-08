@@ -10,7 +10,7 @@ Nordmark Retail Group is a mid-sized European omnichannel retailer operating thr
 
 The company manages a multi-node supply chain where inventory flows through:
 
-Suppliers → Distribution Centers (DCs) → Stores → Customers
+**Suppliers → Distribution Centers (DCs) → Stores → Customers**
 
 For online orders, inventory can be fulfilled directly from Distribution Centers or stores, which increases the complexity of inventory planning and allocation.
 
@@ -30,49 +30,42 @@ The analysis focuses on:
 
 ---
 
-# Business Problem
+## Business Problem
 
 Nordmark generates a large amount of operational data, but the main challenge is converting this data into timely and actionable decisions.
 
 The key business problems identified in the scenario are:
 
-### Stockouts
-
+**Stockouts**
 Products can become unavailable at one location while inventory is still available elsewhere.
 
-**Business impact:**
-
+*Business impact:*
 - Lost sales
 - Lower customer satisfaction
 - Reduced product availability
 - Emergency inventory reallocations
 
-### Overstock
-
+**Overstock**
 Some SKUs may carry significantly more inventory than the level supported by demand.
 
-**Business impact:**
-
+*Business impact:*
 - Working capital tied up in inventory
 - Higher storage costs
 - Increased markdown risk
 - Lower inventory efficiency
 
-### Poor Forecasting
-
+**Poor Forecasting**
 Forecast errors may only become visible after inventory problems have already occurred.
 
-### Channel Misalignment
-
+**Channel Misalignment**
 Store and e-commerce inventory requirements may compete for the same available stock.
 
-### Reactive Decisions
-
+**Reactive Decisions**
 Supply chain teams may respond to problems after they occur instead of identifying risks early.
 
 ---
 
-# Business Questions
+## Business Questions
 
 The project was designed around five key business questions defined in the business scenario.
 
@@ -86,26 +79,23 @@ The project was designed around five key business questions defined in the busin
 
 ---
 
-# Project Objectives
+## Project Objectives
 
 The analysis supports Nordmark's supply chain objectives across three time horizons.
 
-### Short-Term | 0–6 Months
-
+**Short-Term (0–6 Months)**
 - Reduce stockout incidents
 - Stop unnecessary emergency reallocations
 - Stabilize the replenishment cycle
 - Improve visibility of inventory availability
 
-### Mid-Term | 6–18 Months
-
+**Mid-Term (6–18 Months)**
 - Improve inventory efficiency
 - Improve forecast accuracy
 - Improve coordination between stores and online channels
 - Increase inventory turnover
 
-### Long-Term | 18+ Months
-
+**Long-Term (18+ Months)**
 - Build a resilient supply chain
 - Absorb demand fluctuations more effectively
 - Scale operations efficiently
@@ -113,13 +103,11 @@ The analysis supports Nordmark's supply chain objectives across three time horiz
 
 ---
 
-# Data Sources
+## Data Sources
 
 The project was developed using data from the Nordmark supply chain database.
 
-The original database was provided as a SQL Server backup:
-
-`supply_chain.bak`
+The original database was provided as a SQL Server backup: `supply_chain.bak`
 
 The backup was restored and analyzed using SQL Server.
 
@@ -132,17 +120,13 @@ The Power BI model uses the following main tables:
 - `silver__location_master__lite`
 - `gold__fact_inventory_exposure__lite`
 
-The SQL Server backup file is intentionally not included in the GitHub repository because the file exceeds GitHub's 100 MB file-size limit.
+> The SQL Server backup file is intentionally not included in the GitHub repository because the file exceeds GitHub's 100 MB file-size limit.
 
 ---
 
-# Data Preparation & Cleaning
+## Data Preparation & Cleaning
 
-The data preparation process was performed using SQL Server, Power Query, and Power BI.
-
-## Data Cleaning
-
-The preparation process included:
+The data preparation process was performed using SQL Server, Power Query, and Power BI, and included:
 
 - Data type validation
 - Data consistency checks
@@ -160,14 +144,11 @@ The preparation process included:
 
 ---
 
-# Exploratory Data Analysis
+## Exploratory Data Analysis
 
 Before building the dashboard, the data was explored to understand the operational structure of the business.
 
-The exploration focused on:
-
-### Inventory
-
+**Inventory**
 - Inventory levels over time
 - Inventory by category
 - Inventory by location
@@ -177,8 +158,7 @@ The exploration focused on:
 - Low inventory products
 - Overstock products
 
-### Sales
-
+**Sales**
 - Sales volume
 - Revenue
 - Product performance
@@ -186,18 +166,16 @@ The exploration focused on:
 - Category performance
 - Customer and channel behavior
 
-### Inventory Movements
-
+**Inventory Movements**
 - Movement quantities
 - Movement frequency
 - Movement types
 - Movement behavior by SKU
 - Movement behavior by location
 
-### Supply Chain Relationships
+**Supply Chain Relationships**
 
 The analysis also compared:
-
 - Inventory levels vs. sales
 - Inventory movements vs. inventory snapshots
 - Inventory availability vs. location
@@ -207,50 +185,34 @@ This exploration helped identify the KPIs and visuals required for the final das
 
 ---
 
-# Data Model
+## Data Model
 
 The Power BI model was designed around the main operational supply chain entities.
 
-### Main Tables
+**Inventory Snapshots** — tracks inventory levels at different dates and locations.
 
-**Inventory Snapshots**
+**Inventory Movements** — used to analyze replenishment and inventory movement activity.
 
-Used to track inventory levels at different dates and locations.
+**Sales Transactions** — used to analyze product demand, sales volume, and revenue.
 
-**Inventory Movements**
-
-Used to analyze replenishment and inventory movement activity.
-
-**Sales Transactions**
-
-Used to analyze product demand, sales volume, and revenue.
-
-**Product Master**
-
-Provides product attributes such as:
-
+**Product Master** — provides product attributes such as:
 - SKU
 - Category
 - Brand
 - Product information
 
-**Location Master**
-
-Provides location attributes such as:
-
+**Location Master** — provides location attributes such as:
 - Location
 - Location type
 - Store
 - Distribution Center
 - Online
 
-**Date Table**
-
-Used for time-based analysis and filtering.
+**Date Table** — used for time-based analysis and filtering.
 
 ---
 
-# Power BI & DAX
+## Power BI & DAX
 
 The dashboard was developed using:
 
@@ -265,104 +227,61 @@ Measures were created to support inventory, sales, stockout, overstock, and move
 
 ---
 
-# Key Performance Indicators
+## Key Performance Indicators
 
 The Inventory Overview dashboard includes the following KPIs:
 
-### Total Inventory On Hand
-
-Measures the total quantity of inventory currently available based on the selected snapshot.
-
-### Inventory Value
-
-Measures the financial value of the available inventory.
-
-### Out of Stock SKUs
-
-Counts SKUs that are currently out of stock.
-
-### Stockout Rate
-
-Measures the proportion of active SKUs affected by stockouts.
-
-### Selected Snapshot Date
-
-Shows the latest/selected inventory snapshot date used for the current inventory analysis.
-
-### Average Inventory Level
-
-Measures the average inventory quantity across the selected context.
-
-### Total Active SKUs
-
-Shows the number of active SKUs being monitored.
-
-### Stockout Count
-
-Measures the number of stockout records/incidents within the selected context.
+| KPI | Description |
+|---|---|
+| **Total Inventory On Hand** | Total quantity of inventory currently available based on the selected snapshot |
+| **Inventory Value** | Financial value of the available inventory |
+| **Out of Stock SKUs** | Count of SKUs that are currently out of stock |
+| **Stockout Rate** | Proportion of active SKUs affected by stockouts |
+| **Selected Snapshot Date** | Latest/selected inventory snapshot date used for the current analysis |
+| **Average Inventory Level** | Average inventory quantity across the selected context |
+| **Total Active SKUs** | Number of active SKUs being monitored |
+| **Stockout Count** | Number of stockout records/incidents within the selected context |
 
 ---
 
-# Dashboard Structure
+## Dashboard Structure
 
 The Power BI report contains multiple analytical pages.
 
-## 1. Home Page
+### 1. Home Page
 
-The Home Page provides an introduction to the Nordmark Supply Chain Analytics project and acts as the main navigation page.
-
-It provides access to:
+Provides an introduction to the Nordmark Supply Chain Analytics project and acts as the main navigation page, giving access to:
 
 - Inventory Overview
 - Sales
 - Inventory Movements
 - Overstock & Stockout
 
----
+### 2. Inventory Overview
 
-## 2. Inventory Overview
+A high-level view of the current inventory situation.
 
-The Inventory Overview page provides a high-level view of the current inventory situation.
-
-### Main Visuals
-
+**Main Visuals**
 - Inventory Trend
 - Inventory by Category
 - Stockout by Location
 - Inventory by Location Type
 - Detailed Inventory Matrix
 
-### Main Questions Answered
-
-This page helps answer:
-
+**Main Questions Answered**
 - How is inventory changing over time?
 - Which categories hold the most inventory?
 - Which locations experience the most stockouts?
 - How is inventory distributed between stores, DCs, and online?
 - Which SKUs and locations currently have inventory issues?
 
-### Business Question Coverage
+**Business Question Coverage**
+Primarily supports **Business Question 1** — *Where and when does inventory run low or out of stock?*
+Also supports **Business Question 3** — *Which SKUs consistently carry more stock than demand requires?*
 
-Primarily supports:
+### 3. Sales Dashboard
 
-**Business Question 1**
-
-> Where and when does inventory run low or out of stock?
-
-It also provides supporting information for:
-
-**Business Question 3**
-
-> Which SKUs consistently carry more stock than demand requires?
-
----
-
-## 3. Sales Dashboard
-
-The Sales page focuses on demand and sales performance.
-
-It is used to understand:
+Focuses on demand and sales performance, used to understand:
 
 - Sales volume
 - Revenue
@@ -373,29 +292,13 @@ It is used to understand:
 
 The Sales analysis provides the demand-side perspective required to evaluate whether inventory levels are aligned with actual sales.
 
-### Business Question Coverage
+**Business Question Coverage**
+Primarily supports **Business Question 2** — *Which SKUs and locations drive the most sales volume and revenue?*
+Also supports **Business Question 3**, by providing demand information that can be compared with inventory levels.
 
-Primarily supports:
+### 4. Inventory Movements
 
-**Business Question 2**
-
-> Which SKUs and locations drive the most sales volume and revenue?
-
-It also supports:
-
-**Business Question 3**
-
-> Which SKUs consistently carry more stock than demand requires?
-
-by providing demand information that can be compared with inventory levels.
-
----
-
-## 4. Inventory Movements
-
-The Inventory Movements page analyzes inventory movement activity across the supply chain.
-
-The page focuses on:
+Analyzes inventory movement activity across the supply chain, focusing on:
 
 - Movement quantity
 - Movement frequency
@@ -404,38 +307,18 @@ The page focuses on:
 - Replenishment activity
 - Inventory flow
 
-### Business Question Coverage
+**Business Question Coverage**
+Primarily supports **Business Question 4** — *How often does replenishment happen, and for which SKUs / locations?*
+Also supports **Business Question 5** — *Do inventory movements broadly align with sales and snapshot data?*
 
-Primarily supports:
+### 5. Overstock & Stockout
 
-**Business Question 4**
+Focuses specifically on inventory risk, helping to identify:
 
-> How often does replenishment happen, and for which SKUs / locations?
+- **Stockout Risk** — products that have insufficient inventory or are completely out of stock
+- **Overstock Risk** — products carrying inventory levels significantly above the required level relative to demand
 
-It also supports:
-
-**Business Question 5**
-
-> Do inventory movements broadly align with sales and snapshot data?
-
----
-
-## 5. Overstock & Stockout
-
-The Overstock & Stockout page focuses specifically on inventory risk.
-
-It helps identify:
-
-### Stockout Risk
-
-Products that have insufficient inventory or are completely out of stock.
-
-### Overstock Risk
-
-Products carrying inventory levels significantly above the required level relative to demand.
-
-### Main Analysis Areas
-
+**Main Analysis Areas**
 - Overstock products
 - Stockout products
 - Inventory risk by location
@@ -444,23 +327,13 @@ Products carrying inventory levels significantly above the required level relati
 - Product-level inventory status
 - Location-level inventory issues
 
-### Business Question Coverage
-
-Primarily supports:
-
-**Business Question 3**
-
-> Which SKUs consistently carry more stock than demand requires?
-
-It also supports:
-
-**Business Question 1**
-
-> Where and when does inventory run low or out of stock?
+**Business Question Coverage**
+Primarily supports **Business Question 3** — *Which SKUs consistently carry more stock than demand requires?*
+Also supports **Business Question 1** — *Where and when does inventory run low or out of stock?*
 
 ---
 
-# Business Question Coverage
+## Business Question Coverage Summary
 
 | Business Question | Dashboard Page | Main Analysis |
 |---|---|---|
@@ -472,11 +345,9 @@ It also supports:
 
 ---
 
-# Interactive Features
+## Interactive Features
 
-The dashboard includes interactive filters to allow users to analyze the supply chain from different perspectives.
-
-Available filters include:
+The dashboard includes interactive filters to allow users to analyze the supply chain from different perspectives:
 
 - Year
 - Month
@@ -485,88 +356,51 @@ Available filters include:
 - Category
 - Brand
 
-Users can combine filters to investigate specific:
-
-- Time periods
-- Locations
-- Product categories
-- Brands
-- Supply chain nodes
-
-This allows managers and planners to move from high-level KPIs to detailed SKU-level analysis.
+Users can combine filters to investigate specific time periods, locations, product categories, brands, and supply chain nodes — allowing managers and planners to move from high-level KPIs to detailed SKU-level analysis.
 
 ---
 
-# Dashboard Themes
+## Dashboard Themes
 
-The report was designed with both:
+The report was designed with both a **Light Theme** and a **Dark Theme**.
 
-- Light Theme
-- Dark Theme
-
-The Light Theme uses a clean blue-based visual identity designed for professional reporting and presentation.
-
-The Dark Theme provides an alternative visual experience while maintaining the same analytical structure.
+- The **Light Theme** uses a clean, blue-based visual identity designed for professional reporting and presentation.
+- The **Dark Theme** provides an alternative visual experience while maintaining the same analytical structure.
 
 ---
 
-# 🖼️ Dashboard Preview
+## 🖼️ Dashboard Preview
 
-## Home Page
-
+### Home Page
 ![Home Page](Screenshots/home-page.png)
 
----
+### Inventory Overview
 
-## Inventory Overview
+| Light Theme | Dark Theme |
+|---|---|
+| ![Inventory Overview Light](Screenshots/inventory-overview-light.png) | ![Inventory Overview Dark](Screenshots/inventory-overview-dark.png) |
 
-### Light Theme
+### Sales Dashboard
 
-![Inventory Overview Light](Screenshots/inventory-overview-light.png)
+| Light Theme | Dark Theme |
+|---|---|
+| ![Sales Dashboard Light](Screenshots/sales-light.png) | ![Sales Dashboard Dark](Screenshots/sales-dark.png) |
 
-### Dark Theme
+### Inventory Movements
 
-![Inventory Overview Dark](Screenshots/inventory-overview-dark.png)
+| Light Theme | Dark Theme |
+|---|---|
+| ![Inventory Movements Light](Screenshots/inventory-movements-light.png) | ![Inventory Movements Dark](Screenshots/inventory-movements-dark.png) |
 
----
+### Overstock & Stockout
 
-## Sales Dashboard
-
-### Light Theme
-
-![Sales Dashboard Light](Screenshots/sales-light.png)
-
-### Dark Theme
-
-![Sales Dashboard Dark](Screenshots/sales-dark.png)
-
----
-
-## Inventory Movements
-
-### Light Theme
-
-![Inventory Movements Light](Screenshots/inventory-movements-light.png)
-
-### Dark Theme
-
-![Inventory Movements Dark](Screenshots/inventory-movements-dark.png)
+| Light Theme | Dark Theme |
+|---|---|
+| ![Overstock & Stockout Light](Screenshots/overstock-stockout-light.png) | ![Overstock & Stockout Dark](Screenshots/overstock-stockout-dark.png) |
 
 ---
 
-## Overstock & Stockout
-
-### Light Theme
-
-![Overstock & Stockout Light](Screenshots/overstock-stockout-light.png)
-
-### Dark Theme
-
-![Overstock & Stockout Dark](Screenshots/overstock-stockout-dark.png)
-
----
-
-# Key Business Insights
+## Key Business Insights
 
 The dashboard is designed to help supply chain stakeholders identify:
 
@@ -579,67 +413,23 @@ The dashboard is designed to help supply chain stakeholders identify:
 - Replenishment activity across locations
 - Potential mismatches between inventory, sales, and movements
 
-The purpose of these insights is not only to report what happened, but to support decisions around:
-
-- Replenishment
-- Inventory allocation
-- Stockout prevention
-- Overstock reduction
-- Inventory planning
-- Channel coordination
+The purpose of these insights is not only to report what happened, but to support decisions around replenishment, inventory allocation, stockout prevention, overstock reduction, inventory planning, and channel coordination.
 
 ---
 
-# Business Value
+## Business Value
 
-The dashboard provides different stakeholders with the information needed to make better supply chain decisions.
-
-### Supply Chain Manager
-
-Can monitor:
-
-- Stockout levels
-- Product availability
-- Inventory distribution
-- Inventory efficiency
-
-### Inventory Planner
-
-Can identify:
-
-- Low-stock SKUs
-- Overstock SKUs
-- Replenishment requirements
-- Inventory imbalances
-
-### Retail Operations Lead
-
-Can monitor:
-
-- Store-level stockout issues
-- Recurring location problems
-- Product availability
-
-### E-commerce Lead
-
-Can monitor:
-
-- Online inventory availability
-- Inventory competition between channels
-- Replenishment requirements
-
-### Finance / Commercial Analyst
-
-Can monitor:
-
-- Inventory value
-- Revenue
-- Sales performance
-- Potential working-capital impact of excess inventory
+| Stakeholder | Can Monitor |
+|---|---|
+| **Supply Chain Manager** | Stockout levels, product availability, inventory distribution, inventory efficiency |
+| **Inventory Planner** | Low-stock SKUs, overstock SKUs, replenishment requirements, inventory imbalances |
+| **Retail Operations Lead** | Store-level stockout issues, recurring location problems, product availability |
+| **E-commerce Lead** | Online inventory availability, inventory competition between channels, replenishment requirements |
+| **Finance / Commercial Analyst** | Inventory value, revenue, sales performance, potential working-capital impact of excess inventory |
 
 ---
 
-# Tools & Technologies
+## Tools & Technologies
 
 - Microsoft Power BI
 - Power Query
@@ -654,10 +444,9 @@ Can monitor:
 
 ---
 
-# Skills Demonstrated
+## Skills Demonstrated
 
-### Data Analytics
-
+**Data Analytics**
 - Exploratory Data Analysis
 - Business Requirements Analysis
 - KPI Design
@@ -666,8 +455,7 @@ Can monitor:
 - Sales Analysis
 - Demand vs Inventory Analysis
 
-### Data Engineering / Preparation
-
+**Data Engineering / Preparation**
 - SQL Server
 - Power Query
 - Data Cleaning
@@ -675,8 +463,7 @@ Can monitor:
 - Data Validation
 - Data Modeling
 
-### Power BI
-
+**Power BI**
 - Interactive Dashboards
 - DAX Measures
 - KPI Cards
@@ -690,7 +477,7 @@ Can monitor:
 
 ---
 
-# Repository Structure
+## Repository Structure
 
 ```text
 Supply Chain Analytics • Nordmark Retail Group
@@ -704,24 +491,26 @@ Supply Chain Analytics • Nordmark Retail Group
 │   └── supply_chain.bak
 │
 ├── Screenshots
-│   ├── Home Page.png
-│   ├── Inventory Overview Light.png
-│   ├── Inventory Overview Dark.png
-│   ├── Sales Light.png
-│   ├── Sales Dark.png
-│   ├── Inventory Movements Light.png
-│   ├── Inventory Movements Dark.png
-│   ├── Overstock & Stockout Light.png
-│   └── Overstock & Stockout Dark.png
+│   ├── home-page.png
+│   ├── inventory-overview-light.png
+│   ├── inventory-overview-dark.png
+│   ├── sales-light.png
+│   ├── sales-dark.png
+│   ├── inventory-movements-light.png
+│   ├── inventory-movements-dark.png
+│   ├── overstock-stockout-light.png
+│   └── overstock-stockout-dark.png
 │
 └── README.md
+```
 
-Note: The original supply_chain.bak SQL Server backup is part of the project source data but may be excluded from the GitHub repository because GitHub has a 100 MB individual file-size limit.
+> **Note:** The original `supply_chain.bak` SQL Server backup is part of the project source data but is excluded from the GitHub repository because GitHub enforces a 100 MB individual file-size limit.
 
-Project Workflow
+---
 
-The project followed a complete analytics workflow:
+## Project Workflow
 
+```
 Business Requirements
         ↓
 Data Source
@@ -741,39 +530,35 @@ Dashboard Development
 Business Insights
         ↓
 Decision Support
-Final Outcome
+```
 
-The final Power BI solution transforms raw operational supply chain data into an interactive analytical dashboard.
+---
 
-The solution provides visibility into:
+## Final Outcome
 
-Inventory availability
-Stockouts
-Overstock
-Sales performance
-Inventory movements
-Product performance
-Location performance
-Inventory value
-Supply chain risk
+The final Power BI solution transforms raw operational supply chain data into an interactive analytical dashboard, providing visibility into:
+
+- Inventory availability
+- Stockouts
+- Overstock
+- Sales performance
+- Inventory movements
+- Product performance
+- Location performance
+- Inventory value
+- Supply chain risk
 
 This enables Nordmark Retail Group to move from reactive supply chain management toward a more data-driven and proactive planning approach.
 
-Author
-Naguib Mousa
+---
 
+## Author
+
+**Naguib Mousa**
 Data Analyst | Power BI Developer | SQL | Excel | Data Visualization | BI
 
-Portfolio
-
-https://naguib5.github.io/
-
-LinkedIn
-
-https://www.linkedin.com/in/naguib-mousa-a9719b220/
-
-GitHub
-
-https://github.com/Naguib5
+- Portfolio: [naguib5.github.io](https://naguib5.github.io/)
+- LinkedIn: [linkedin.com/in/naguib-mousa-a9719b220](https://www.linkedin.com/in/naguib-mousa-a9719b220/)
+- GitHub: [github.com/Naguib5](https://github.com/Naguib5)
 
 ⭐ If you found this project useful, feel free to star the repository.
