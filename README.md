@@ -510,11 +510,11 @@ The Dark Theme provides an alternative visual experience while maintaining the s
 
 ---
 
-## 🖼️ Dashboard Preview
+# 🖼️ Dashboard Preview
 
 ## Home Page
 
-![Home Page](<Screenshots/Home Page.png>)
+![Home Page](Screenshots/home-page.png)
 
 ---
 
@@ -522,11 +522,11 @@ The Dark Theme provides an alternative visual experience while maintaining the s
 
 ### Light Theme
 
-![Inventory Overview Light](<Screenshots/Inventory Overview Light.png>)
+![Inventory Overview Light](Screenshots/inventory-overview-light.png)
 
 ### Dark Theme
 
-![Inventory Overview Dark](<Screenshots/Inventory Overview Dark.png>)
+![Inventory Overview Dark](Screenshots/inventory-overview-dark.png)
 
 ---
 
@@ -534,11 +534,11 @@ The Dark Theme provides an alternative visual experience while maintaining the s
 
 ### Light Theme
 
-![Sales Dashboard Light](<Screenshots/Sales Light.png>)
+![Sales Dashboard Light](Screenshots/sales-light.png)
 
 ### Dark Theme
 
-![Sales Dashboard Dark](<Screenshots/Sales Dark.png>)
+![Sales Dashboard Dark](Screenshots/sales-dark.png)
 
 ---
 
@@ -546,11 +546,11 @@ The Dark Theme provides an alternative visual experience while maintaining the s
 
 ### Light Theme
 
-![Inventory Movements Light](<Screenshots/Inventory Movements Light.png>)
+![Inventory Movements Light](Screenshots/inventory-movements-light.png)
 
 ### Dark Theme
 
-![Inventory Movements Dark](<Screenshots/Inventory Movements Dark.png>)
+![Inventory Movements Dark](Screenshots/inventory-movements-dark.png)
 
 ---
 
@@ -558,11 +558,11 @@ The Dark Theme provides an alternative visual experience while maintaining the s
 
 ### Light Theme
 
-![Overstock & Stockout Light](<Screenshots/Overstock & Stockout Light.png>)
+![Overstock & Stockout Light](Screenshots/overstock-stockout-light.png)
 
 ### Dark Theme
 
-![Overstock & Stockout Dark](<Screenshots/Overstock & Stockout Dark.png>)
+![Overstock & Stockout Dark](Screenshots/overstock-stockout-dark.png)
 
 ---
 
